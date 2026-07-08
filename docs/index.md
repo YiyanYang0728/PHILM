@@ -1,20 +1,29 @@
-<h1 align="center">PHILM Step-by-Step Tutorial</h1>
+<div align="center" style="background-color:#316297; color:#ffffff; padding:42px 28px; border-radius:8px; margin-bottom:28px;">
+  <h1 style="color:#ffffff; margin:0 0 18px 0;">PHILM Step-by-Step Tutorial</h1>
+  <p style="color:#ffffff; font-size:18px; line-height:1.6; margin:0 auto 26px auto; max-width:980px;">
+    Reproduce the PHILM analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
+  </p>
+  <p style="color:#ffffff; font-size:18px; margin:0;">
+    <a href="#contents" style="color:#ffffff;">Contents</a> |
+    <a href="#usage" style="color:#ffffff;">Usage</a> |
+    <a href="#tutorial" style="color:#ffffff;">Tutorial</a> |
+    <a href="#results" style="color:#ffffff;">Results</a>
+  </p>
+</div>
 
-<p align="center">
-  <strong>Predict phage-host interactions directly from metagenomic profiles</strong>
-</p>
+## Contents
 
-<p align="center">
-  Reproduce the PHILM analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
-</p>
+**Quick links:** [Overview](#overview) | [Usage](#usage) | [Tutorial](#tutorial) | [Results](#results)
 
-<p align="center">
-  <a href="https://github.com/YiyanYang0728/PHILM">PHILM GitHub</a> |
-  <a href="https://www.biorxiv.org/content/10.1101/2025.05.26.656232v2.full">PHILM Paper</a> |
-  <a href="#usage">Usage</a> |
-  <a href="#tutorial">Tutorial</a> |
-  <a href="#results">Results</a>
-</p>
+**Workflow:**
+
+| Step | Section |
+| ---- | ------- |
+| Step 1 | [Prepare input files](#step-1-prepare-input-files) |
+| Step 2 | [Train PHILM with phage profiles to predict prokaryotic profiles](#step-2-train-philm-with-phage-profiles-to-predict-prokaryotic-profiles) |
+| Step 3 | [Evaluate the trained model](#step-3-evaluate-the-trained-model) |
+| Step 4 | [Predict phage-host interactions using gradient-based sensitivity analysis](#step-4-predict-phage-host-interactions-using-gradient-based-sensitivity-analysis) |
+| Step 5 | [Estimate permutation-based P-values for PHIs (Optional)](#step-5-estimate-permutation-based-p-values-for-phis-optional) |
 
 ## Overview
 
