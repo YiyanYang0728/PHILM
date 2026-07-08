@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="../img/Figure1.jpg" alt="PHILM workflow overview" width="100%">
-</p>
-
 <h1 align="center">PHILM Step-by-Step Tutorial</h1>
 
 <p align="center">
