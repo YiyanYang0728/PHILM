@@ -84,7 +84,9 @@ PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. S
 ## Usage
 
 ### 1. Data Preparation
-Cross-kingdom relative abundance profiles, including prokaryotic and phage profiles, can be generated using tools such as [sylph](https://github.com/bluenote-1577/sylph) and [phanta](https://github.com/bhattlab/phanta).
+
+Prepare three inputs for `scripts/split_data.py`: a prokaryotic relative abundance profile, a phage relative abundance profile, and an output directory.
+Cross-kingdom relative abundance profiles, including prokaryotes and phages, can be generated using tools such as [sylph](https://github.com/bluenote-1577/sylph) and [phanta](https://github.com/bhattlab/phanta).
 
 ```bash
 mkdir -p raw_data
@@ -93,7 +95,7 @@ unzip -j raw_data/example.zip -d raw_data
 rm raw_data/example.zip
 ```
 
-Prepare three inputs for `scripts/split_data.py`: a prokaryotic relative abundance profile, a phage relative abundance profile, and an output directory.
+Split data into training, validation and test datasets
 
 ```bash
 philm-split --bact-arc raw_data/Bact_arc_profile.tsv --phage raw_data/Phage_profile.tsv --outdir data
@@ -101,10 +103,10 @@ philm-split --bact-arc raw_data/Bact_arc_profile.tsv --phage raw_data/Phage_prof
 
 **Outputs:**
 
-* Raw split data without CLR transformation:
+* Raw split data without normalization:
   `data/<Phage/Bact_arc>_<train/validation/test>_no_clr.tsv`
 
-* CLR-transformed split data:
+* Normalized split data:
   `data/<Phage/Bact_arc>_<train/validation/test>.tsv`
 
 * Feature names:
