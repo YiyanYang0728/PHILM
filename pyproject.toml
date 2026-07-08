@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "philm"
+version = "0.0.1"
+description = "PHILM: Phage-Host Interaction Learning from Metagenomic profiles"
+readme = "README.md"
+requires-python = ">=3.10"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Yiyan Yang" }
+]
+keywords = [
+  "phage",
+  "host prediction",
+  "metagenomics",
+  "microbiome",
+  "virome",
+  "deep learning"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+
+dependencies = [
+  "numpy",
+  "pandas",
+  "scipy",
+  "scikit-learn",
+  "pyyaml",
+  "tqdm",
+  "matplotlib"
+]
+
+[project.optional-dependencies]
+cpu = [
+  "torch"
+]
+gpu = [
+  "torch"
+]
+dev = [
+  "build",
+  "twine",
+  "pytest"
+]
+
+[project.urls]
+Homepage = "https://github.com/YiyanYang0728/PHILM"
+Repository = "https://github.com/YiyanYang0728/PHILM"
+Issues = "https://github.com/YiyanYang0728/PHILM/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+philm = [
+  "config/*.yaml",
+  "config/*.yml"
+]
+
+[project.scripts]
+philm-split = "philm.scripts.split_data:main"
+philm-train = "philm.model.train:main"
+philm-evaluate = "philm.model.evaluate:main"
+philm-summarize = "philm.scripts.summarize:main"
+philm-interaction = "philm.scripts.infer_interactions:main"
+philm-permutate = "philm.model.train_permutation:main"
+philm-pval = "philm.scripts.permutation_pvalues:main"
+philm-repr = "philm.model.extract_repr:main"

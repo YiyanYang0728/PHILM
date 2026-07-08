@@ -1,0 +1,7 @@
+data:
+  test_X: data/Phage_test.tsv
+  test_Y: data/Bact_arc_test.tsv
+output_prefix: results/PHILM_predict_test
+model:
+  path: results/PHILM_best_model.pth
+  batch_size: 512

@@ -1,0 +1,7 @@
+data:
+  test_X: data/Phage_val.tsv
+output_prefix: results/PHILM_val
+model:
+  path: results/PHILM_best_model.pth
+  output_dim: #OUTDIM#
+  batch_size: 512
