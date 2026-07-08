@@ -1,4 +1,24 @@
-# Welcome to PHILM Step-by-Step Tutorial
+<p align="center">
+  <img src="../img/Figure1.jpg" alt="PHILM workflow overview" width="100%">
+</p>
+
+<h1 align="center">PHILM Step-by-Step Tutorial</h1>
+
+<p align="center">
+  <strong>Predict phage-host interactions directly from metagenomic profiles</strong>
+</p>
+
+<p align="center">
+  Reproduce the PHILM analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
+</p>
+
+<p align="center">
+  <a href="https://github.com/YiyanYang0728/PHILM">PHILM GitHub</a> |
+  <a href="https://www.biorxiv.org/content/10.1101/2025.05.26.656232v2.full">PHILM Paper</a> |
+  <a href="#usage">Usage</a> |
+  <a href="#tutorial">Tutorial</a> |
+  <a href="#results">Results</a>
+</p>
 
 ## Overview
 
@@ -53,7 +73,6 @@ Phage profile:
 | vOTU-014971 | 0.0        | 0.00237088 | 0.00220980 | 0.00230800 |
 | vOTU-014982 | 0.0        | 0.0        | 0.0        | 0.0        |
 | ...         | ...        | ...        | ...        | ...        |
-
 
 
 Prokaryotic and phage relative abundance profiles can be generated using tools such as [sylph](https://github.com/bluenote-1577/sylph) and [phanta](https://github.com/bhattlab/phanta).
