@@ -1,4 +1,4 @@
-# PHILM: Phage-Host Interaction Learning from Metagenomic Profiles
+# PHILM: Phage-Host Interaction Learning from Metagenomic profiles
 
 ## Overview
 
