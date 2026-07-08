@@ -91,11 +91,11 @@ After installation, PHILM provides several command-line tools for data preparati
 | ------------------- | --------------------------------------------------------------------------------------------------- |
 | `philm-split`       | Split paired prokaryotic and phage abundance profiles into training, validation, and test datasets. |
 | `philm-train`       | Train a PHILM model using a YAML configuration file.                                                |
-| `philm-test`        | Evaluate a trained PHILM model and generate prediction results.                                     |
+| `philm-evaluate`    | Evaluate a trained PHILM model and generate prediction results.                                     |
 | `philm-summarize`   | Summarize prediction performance metrics from PHILM output files.                                   |
 | `philm-interaction` | Infer phage-prokaryote interaction scores from a trained PHILM model.                               |
 | `philm-permutate`   | (Optional) Train PHILM models on permuted datasets for null-model construction.                     |
-| `philm-perm-pval`   | (Optional) Calculate empirical p-values and adjusted p-values from permutation-based null results.  |
+| `philm-pval`        | (Optional) Calculate empirical p-values and adjusted p-values from permutation-based null results.  |
 | `philm-repr`        | (Optional) Extract PHILM-derived latent representations from a trained model.                       |
 
 You can view the help message for each command using `-h` or `--help`.
