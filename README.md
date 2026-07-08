@@ -90,9 +90,9 @@ PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. S
 ### Tutorial
 A step-by-step tutorial for phage-host interaction prediction from **7,016 healthy human stool samples** is available [here](https://yiyanyang0728.github.io/PHILM/).
 
-After installation, PHILM provides several command-line tools for data preparation, model training, evaluation, interaction inference, permutation-based significance testing, and latent representation extraction.
-
 ---
+
+After installation, PHILM provides several command-line tools for data preparation, model training, evaluation, interaction inference, permutation-based significance testing, and latent representation extraction.
 
 ### Available Commands
 
