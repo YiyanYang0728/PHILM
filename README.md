@@ -18,6 +18,7 @@
     - [Option 1. Install using conda environment files](#option-1-install-using-conda-environment-files)
     - [Option 2. Install using pip inside a conda environment](#option-2-install-using-pip-inside-a-conda-environment)
   - [Usage](#usage)
+    - [Tutorial](#tutorial)
     - [Available Commands](#available-commands)
     - [1. Data Preparation](#1-data-preparation)
     - [2. Model Training](#2-model-training)
@@ -28,6 +29,7 @@
   - [Dependencies](#dependencies)
   - [License](#license)
   - [Citation](#citation)
+
 
 ## Installation
 
@@ -55,6 +57,8 @@ conda activate PHILM-cpu
 ```
 If preferred, `mamba` can be used instead of `conda` in the commands above.
 
+---
+
 ### Option 2. Install using pip inside a conda environment
 
 Create a clean conda environment:
@@ -79,11 +83,16 @@ pip install -r env/requirements.cpu.txt
 
 PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. Separate requirement files are provided because PyTorch uses different installation packages for CUDA-enabled and CPU-only environments.
 
-> 🍎 **macOS Support:** A macOS-compatible version of PHILM is now available in a separate branch: [PHILM macOS version](https://github.com/YiyanYang0728/PHILM/tree/macos).
+> 🍎 **macOS Support:** A macOS-compatible version of PHILM is available in a separate branch: [PHILM macOS version](https://github.com/YiyanYang0728/PHILM/tree/macos).
 
 ## Usage
 
+### Tutorial
+A step-by-step tutorial for phage-host interaction prediction from **7,016 healthy human stool samples** is available [here](https://yiyanyang0728.github.io/PHILM/).
+
 After installation, PHILM provides several command-line tools for data preparation, model training, evaluation, interaction inference, permutation-based significance testing, and latent representation extraction.
+
+---
 
 ### Available Commands
 
@@ -92,13 +101,18 @@ After installation, PHILM provides several command-line tools for data preparati
 | `philm-split`       | Split paired prokaryotic and phage abundance profiles into training, validation, and test datasets. |
 | `philm-train`       | Train a PHILM model using a YAML configuration file.                                                |
 | `philm-evaluate`    | Evaluate a trained PHILM model and generate prediction results.                                     |
-| `philm-summarize`   | Summarize prokaryotic profile prediction performance metrics from PHILM output files.               |
+| `philm-summarize`   | Summarize prediction performance metrics from PHILM output files.                                   |
 | `philm-interaction` | Infer phage-prokaryote interaction scores from a trained PHILM model.                               |
 | `philm-permutate`   | (Optional) Train PHILM models on permuted datasets for null-model construction.                     |
 | `philm-pval`        | (Optional) Calculate empirical p-values and adjusted p-values from permutation-based null results.  |
 | `philm-repr`        | (Optional) Extract PHILM-derived latent representations from a trained model.                       |
 
 You can view the help message for each command using `-h` or `--help`.
+
+---
+
+**Below, we provide a quick walk-through of PHILM using an example dataset. For more detailed instructions, please visit the [step-by-step tutorial](https://yiyanyang0728.github.io/PHILM/).**
+
 
 ### 1. Data Preparation
 
@@ -119,9 +133,6 @@ philm-split --bact-arc raw_data/Bact_arc_profile.tsv --phage raw_data/Phage_prof
 ```
 
 **Outputs:**
-
-* Raw split data without normalization:
-  `data/<Phage/Bact_arc>_<train/validation/test>_no_clr.tsv`
 
 * Normalized split data:
   `data/<Phage/Bact_arc>_<train/validation/test>.tsv`
@@ -154,8 +165,6 @@ Real-time training progress, checkpoints, and logs are saved in `checkpoints/`.
 * Best parameters:
   `results/PHILM_best_params.yaml`
 
-* Checkpoints and logs:
-  `checkpoints/`
 
 ### 3. Evaluation
 
@@ -191,7 +200,7 @@ philm-summarize results/PHILM_predict_train &> results/PHILM_predict_train.ft.me
 
 ### 4. Interaction Prediction
 
-Infer host-sensitivity scores for each phage-prokaryote feature pair.
+Infer sensitivity scores for each phage-prokaryote feature pair.
 
 ```bash
 # Infer interactions on the training dataset
@@ -221,7 +230,7 @@ This optional step estimates empirical p-values and adjusted p-values for PHILM-
 This step is computationally intensive and is recommended only when formal false discovery rate control is required. It is best suited for high-performance computing environments or systems with sufficient CPU resources. For exploratory analyses, users may first apply a heuristic cutoff, such as `normalized_score >= 3.5`, to prioritize candidate PHIs.
 
 ```bash
-# Step 1: Retrain models using permuted data
+# Step 5.1: Retrain models using permuted data
 
 cat src/philm/config/config_train_perm.yaml \
     <(awk '{print "  "$0}' results/PHILM_best_params.yaml) \
@@ -231,7 +240,7 @@ N=99
 seq 0 $N \
     | awk '{print "philm-permutate -c train_perm.yaml --perm-id "$1}' \
     > jobs.1.txt
-# Run the commands in jobs.1.txt in parallel or submit them as multiple jobs on an HPC cluster.
+# Run the commands in jobs.1.txt in parallel or submit them as multiple jobs on an HPC cluster. For example:
 # while IFS= read -r cmd
 # do
 #   eval "$cmd"
@@ -239,7 +248,7 @@ seq 0 $N \
 ```
 
 ```bash
-# Step 2: Infer PHIs from permutation-trained models
+# Step 5.2: Infer PHIs from permutation-trained models
 
 mkdir -p permutation_infer_configs
 
@@ -279,7 +288,7 @@ for f in permutation_infer_configs/config_infer_gradient.perm_*.yaml; do
         >> jobs.2.txt
 done
 
-# Run the commands in jobs.2.txt in parallel or submit them as multiple jobs on an HPC cluster.
+# Run the commands in jobs.2.txt in parallel or submit them as multiple jobs on an HPC cluster. For example:
 # while IFS= read -r cmd
 # do
 #   eval "$cmd"
@@ -287,7 +296,7 @@ done
 ```
 
 ```bash
-# Step 3: Calculate empirical p-values and adjusted p-values
+# Step 5.3: Calculate empirical p-values and adjusted p-values
 
 philm-pval --norm_mode off \
     --observed results/PHILM_interactions.tsv \
@@ -306,7 +315,7 @@ awk -F"\t" 'NR==1 || $5<0.05' \
 
 ### 6. Latent Representation Extraction (Optional)
 
-PHILM can extract sample-level latent representations from a trained model. These representations can be used for downstream analyses such as sample classification, clustering, and visualization.
+PHILM can extract sample-level latent representations from a trained model. These representations can be used for downstream analyses such as sample classification and clustering.
 
 ```bash
 # Determine the output dimension
@@ -354,6 +363,12 @@ cat results/PHILM_train_repr2.tsv \
 ```
 
 The `repr1_all.tsv` and `repr2_all.tsv` files are tab-separated files without row names or column names. The number of columns corresponds to the dimensionality of the PHILM-derived representations. Samples are organized as rows and are ordered consistently with `data/train_samples.txt`, `data/val_samples.txt`, and `data/test_samples.txt`.
+
+**Output:**
+
+* Predicted interaction scores:
+  `results/repr<1/2>_all.tsv`
+
 
 ## Dependencies
 
