@@ -19,6 +19,7 @@
       - [Option 1. Install using conda environment files](#option-1-install-using-conda-environment-files)
       - [Option 2. Install using pip inside a conda environment](#option-2-install-using-pip-inside-a-conda-environment)
   - [Usage](#usage)
+    - [Available Commands](#available-commands)
     - [1. Data Preparation](#1-data-preparation)
     - [2. Model Training](#2-model-training)
     - [3. Evaluation](#3-evaluation)
@@ -82,6 +83,23 @@ pip install -r env/requirements.cpu.txt
 PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. Separate requirement files are provided because PyTorch uses different installation packages for CUDA-enabled and CPU-only environments.
 
 ## Usage
+
+After installation, PHILM provides several command-line tools for data preparation, model training, evaluation, interaction inference, permutation-based significance testing, and latent representation extraction.
+
+### Available Commands
+
+| Command             | Purpose                                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
+| `philm-split`       | Split paired prokaryotic and phage abundance profiles into training, validation, and test datasets. |
+| `philm-train`       | Train a PHILM model using a YAML configuration file.                                                |
+| `philm-test`        | Evaluate a trained PHILM model and generate prediction results.                                     |
+| `philm-summarize`   | Summarize prediction performance metrics from PHILM output files.                                   |
+| `philm-interaction` | Infer phage-prokaryote interaction scores from a trained PHILM model.                               |
+| `philm-permutate`   | (Optional) Train PHILM models on permuted datasets for null-model construction.                     |
+| `philm-perm-pval`   | (Optional) Calculate empirical p-values and adjusted p-values from permutation-based null results.  |
+| `philm-repr`        | (Optional) Extract PHILM-derived latent representations from a trained model.                       |
+
+You can view the help message for each command using `-h` or `--help`.
 
 ### 1. Data Preparation
 
