@@ -35,7 +35,7 @@ PHILM can be installed on macOS using either a conda environment file or a pip r
 ### Clone the Repository
 
 ```bash
-git clone git@github.com:YiyanYang0728/PHILM.git
+git clone -b macos git@github.com:YiyanYang0728/PHILM.git
 cd PHILM
 ```
 #### Option 1. Install using conda
