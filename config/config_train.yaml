@@ -1,0 +1,12 @@
+data:
+  train_X: data/Phage_train.tsv
+  train_Y: data/Bact_arc_train.tsv
+  val_X: data/Phage_val.tsv
+  val_Y: data/Bact_arc_val.tsv
+model:
+  batch_size: 512 # Batch size
+  patience: 20 # Number of epochs with no improvement after which training will be stopped
+  num_epochs: 8000 # Maximal epochs for training
+  n_trials: 10 # Number of trials for choosing the optimal combinations of parameters, default=10
+  path: results/PHILM_best_model.pth
+  para_path: results/PHILM_best_params.yaml

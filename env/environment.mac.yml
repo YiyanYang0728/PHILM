@@ -1,0 +1,16 @@
+name: PHILM-mac
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy=1.26
+  - pandas=2.2
+  - scipy=1.14
+  - scikit-learn=1.5
+  - scikit-bio=0.6
+  - pyyaml=6.0
+  - optuna=4.0
+  - pip:
+      - torch>=2.4,<3.0
+      - torchdiffeq>=0.2,<0.3

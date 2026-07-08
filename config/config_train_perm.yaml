@@ -1,0 +1,44 @@
+# Fixed-parameter PHILM null-permutation training config.
+# Place this file in config/config_train_permutation.yaml and run from the repo root:
+#   python model/train_permutation.py -c config/config_train_permutation.yaml --perm-id 0
+# For 100 HPC array jobs, pass --perm-id ${SLURM_ARRAY_TASK_ID}.
+
+data:
+  train_X: data/Phage_train.tsv
+  train_Y: data/Bact_arc_train.tsv
+  val_X: data/Phage_val.tsv
+  val_Y: data/Bact_arc_val.tsv
+
+permutation:
+  # Overridden by --perm-id.
+  id: 0
+
+  # Seed used as: seed = base_seed + perm_id, unless --seed is supplied.
+  base_seed: 19910728
+
+  # Null model: shuffle phage/X sample rows relative to fixed bacteria/Y rows.
+  # This breaks the paired phage-bacteria relationship before training.
+  method: shuffle
+
+  # Avoid cases where a Y row is still paired with its original X row.
+  avoid_self_pairs: true
+
+  # Recommended: permute both train and validation pairs for a matched null-training workflow.
+  permute_train_X: true
+  permute_val_X: true
+
+  map_path_template: results/permutation_null/perm_{perm_id_padded}/PHILM_perm_{perm_id_padded}.sample_permutation.tsv
+
+runtime:
+  device: auto
+
+model:
+  batch_size: 512
+  patience: 20
+  num_epochs: 8000
+
+  # Output paths. {perm_id_padded} will be 000, 001, ..., 099.
+  path_template: results/permutation_null/perm_{perm_id_padded}/PHILM_perm_{perm_id_padded}.pth
+  para_path_template: results/permutation_null/perm_{perm_id_padded}/PHILM_perm_{perm_id_padded}.params.yaml
+  log_path_template: results/permutation_null/perm_{perm_id_padded}/PHILM_perm_{perm_id_padded}.train.log
+
