@@ -10,7 +10,7 @@
 
 ## Table of Contents
 
-- [PHILM: Phage-Host Interaction Learning from Metagenomic Profiles](#philm-phage-host-interaction-learning-from-metagenomic-profiles)
+- [PHILM: Phage-Host Interaction Learning from Metagenomic profiles](#philm-phage-host-interaction-learning-from-metagenomic-profiles)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
