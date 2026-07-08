@@ -15,9 +15,8 @@
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Clone the Repository](#clone-the-repository)
-    - [Create a Conda Environment](#create-a-conda-environment)
-      - [Option 1. Install using conda environment files](#option-1-install-using-conda-environment-files)
-      - [Option 2. Install using pip inside a conda environment](#option-2-install-using-pip-inside-a-conda-environment)
+    - [Option 1. Install using conda environment files](#option-1-install-using-conda-environment-files)
+    - [Option 2. Install using pip inside a conda environment](#option-2-install-using-pip-inside-a-conda-environment)
   - [Usage](#usage)
     - [Available Commands](#available-commands)
     - [1. Data Preparation](#1-data-preparation)
@@ -39,9 +38,7 @@ git clone git@github.com:YiyanYang0728/PHILM.git
 cd PHILM
 ```
 
-### Create a Conda Environment
-
-#### Option 1. Install using conda environment files
+### Option 1. Install using conda environment files
 
 For NVIDIA GPU systems with CUDA 12.1-compatible drivers:
 
@@ -58,7 +55,7 @@ conda activate PHILM-cpu
 ```
 If preferred, `mamba` can be used instead of `conda` in the commands above.
 
-#### Option 2. Install using pip inside a conda environment
+### Option 2. Install using pip inside a conda environment
 
 Create a clean conda environment:
 
@@ -81,6 +78,8 @@ pip install -r env/requirements.cpu.txt
 ```
 
 PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. Separate requirement files are provided because PyTorch uses different installation packages for CUDA-enabled and CPU-only environments.
+
+> 🍎 **macOS Support:** A macOS-compatible version of PHILM is now available in a separate branch: [PHILM macOS version](https://github.com/YiyanYang0728/PHILM/tree/macos).
 
 ## Usage
 
