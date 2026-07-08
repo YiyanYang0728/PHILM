@@ -1,7 +1,7 @@
 <div align="center" style="background-color:#316297; color:#ffffff; padding:42px 28px; border-radius:8px; margin-bottom:28px;">
   <h1 style="color:#ffffff; margin:0 0 18px 0;">PHILM Step-by-Step Tutorial</h1>
   <p style="color:#ffffff; font-size:18px; line-height:1.6; margin:0 auto 26px auto; max-width:980px;">
-    Reproduce the PHILM analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
+    Reproduce the analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
   </p>
   <p style="color:#ffffff; font-size:18px; margin:0;">
     <a href="#contents" style="color:#ffffff;">Contents</a> |
@@ -14,9 +14,9 @@
 ## Overview
 
 **PHILM** is a deep learning framework designed to predict phage-host interactions (PHIs) directly from metagenomic profiles.
-In this tutorial, we will teach you how to use PHILM step by step and reproduce the analysis of 7,016 healthy human stool samples reported in the [PHILM paper](https://www.biorxiv.org/content/10.1101/2025.05.26.656232v2.full).
+In this tutorial, we will teach you how to use PHILM step by step and reproduce the analysis of 7,016 healthy human stool samples reported in [our paper](https://www.biorxiv.org/content/10.1101/2025.05.26.656232v2.full).
 
-Please follow the PHILM installation instructions on [PHILM GitHub](https://github.com/YiyanYang0728/PHILM). **Note**: Select the version that matches your Linux GPU, Linux CPU, or macOS system. In this tutorial, we use the Linux GPU-supported PHILM version.
+Please follow the PHILM installation instructions on [GitHub](https://github.com/YiyanYang0728/PHILM). **Note**: Select the version that matches your Linux GPU, Linux CPU, or macOS system. In this tutorial, we use the Linux GPU-supported PHILM version.
 
 ## Usage
 
@@ -428,9 +428,8 @@ vOTU-000001	s__Bifidobacterium catenulatum	0.27397364	0.389766008982696	0.963276
   `results/PHILM_interactions.pvalues.filtered.tsv`
 
 ## Results
-You can skip some steps if they are time-consuming. To perform any step without depending on previous steps, we provided the essential intermediate results on [Zenodo](XXX).  Use `7zz x <compressed_file>.7z` to uncompress:
+You can skip some steps if they are time-consuming. To perform any step without depending on previous steps, we provided the essential intermediate results on [Zenodo](https://zenodo.org/records/21252847).  Use `7zz x <compressed_file>.7z` to uncompress files:
 - `PHILM_input_data.7z`: contains input files that should be put in `data/`.
 - - `PHILM_model_results.7z`: contains `PHILM_best_model.pth`, `PHILM_best_params.yaml`, `PHILM_predict_test.ft.metrics`, `PHILM_predict_val.ft.metrics` and `PHILM_predict_train.ft.metrics`.
 - `PHILM_interactions.7z`: contains `PHILM_interactions.tsv`, `PHILM_interactions.pvalues.tsv` and `PHILM_interactions.pvalues.filtered.tsv`.
-- `permutation_null.7z`: Since we performed 1,000 permutations to get p-values, this file is big. It contains files that follow the pattern "permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv". Put the uncompressed folder in `results/` before running Step 5.3.
-
+- `permutation_null_<start number-end number>.7z`: Since we performed 1,000 permutations to get p-values, these files are big. Put the uncompressed files in `results/permutation_null` and follow the pattern "results/permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv" before running Step 5.3.
