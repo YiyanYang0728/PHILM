@@ -11,20 +11,6 @@
   </p>
 </div>
 
-## Contents
-
-**Quick links:** [Overview](#overview) | [Usage](#usage) | [Tutorial](#tutorial) | [Results](#results)
-
-**Workflow:**
-
-| Step | Section |
-| ---- | ------- |
-| Step 1 | [Prepare input files](#step-1-prepare-input-files) |
-| Step 2 | [Train PHILM with phage profiles to predict prokaryotic profiles](#step-2-train-philm-with-phage-profiles-to-predict-prokaryotic-profiles) |
-| Step 3 | [Evaluate the trained model](#step-3-evaluate-the-trained-model) |
-| Step 4 | [Predict phage-host interactions using gradient-based sensitivity analysis](#step-4-predict-phage-host-interactions-using-gradient-based-sensitivity-analysis) |
-| Step 5 | [Estimate permutation-based P-values for PHIs (Optional)](#step-5-estimate-permutation-based-p-values-for-phis-optional) |
-
 ## Overview
 
 **PHILM** is a deep learning framework designed to predict phage-host interactions (PHIs) directly from metagenomic profiles.
@@ -52,6 +38,17 @@ Available commands are listed below:
 To predict phage-host interactions, we will use the following commands in order: `philm-split`, `philm-train`, `philm-evaluate`, `philm-summarize`, `philm-interaction`, `philm-permutate`, and `philm-pval`.
 
 ## Tutorial
+
+**Workflow:**
+
+| Step | Section |
+| ---- | ------- |
+| Step 1 | [Prepare input files](#step-1-prepare-input-files) |
+| Step 2 | [Train PHILM with phage profiles to predict prokaryotic profiles](#step-2-train-philm-with-phage-profiles-to-predict-prokaryotic-profiles) |
+| Step 3 | [Evaluate the trained model](#step-3-evaluate-the-trained-model) |
+| Step 4 | [Predict phage-host interactions using gradient-based sensitivity analysis](#step-4-predict-phage-host-interactions-using-gradient-based-sensitivity-analysis) |
+| Step 5 | [Estimate permutation-based P-values for PHIs (Optional)](#step-5-estimate-permutation-based-p-values-for-phis-optional) |
+
 
 ### Step 1. Prepare input files
 
