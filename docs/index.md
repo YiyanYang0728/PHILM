@@ -432,4 +432,4 @@ You can skip some steps if they are time-consuming. To perform any step without 
 - `PHILM_input_data.7z`: contains input files that should be put in `data/`.
 - - `PHILM_model_results.7z`: contains `PHILM_best_model.pth`, `PHILM_best_params.yaml`, `PHILM_predict_test.ft.metrics`, `PHILM_predict_val.ft.metrics` and `PHILM_predict_train.ft.metrics`.
 - `PHILM_interactions.7z`: contains `PHILM_interactions.tsv`, `PHILM_interactions.pvalues.tsv` and `PHILM_interactions.pvalues.filtered.tsv`.
-- `permutation_null_<start number-end number>.7z`: Since we performed 1,000 permutations to get p-values, we divided them into 10 files. All of them are big. Merge the uncompressed files in this file structure `results/permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv` before running Step 5.3.
+- `permutation_null_<start number-end number>.7z`: We performed 1,000 permutations to get p-values and a single file is super big, so we divided them into 10 files. Merge the uncompressed files in this file structure `results/permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv` before running Step 5.3.
