@@ -61,7 +61,7 @@ Cross-kingdom relative abundance profiles, including prokaryotes and phages, can
 
 ```bash
 mkdir -p raw_data
-curl -L --retry 3 -o raw_data/example.zip https://zenodo.org/records/21252847/files/example.zip
+curl -L --retry 3 -o raw_data/example.zip https://zenodo.org/records/21269560/files/example.zip
 unzip -j raw_data/example.zip -d raw_data
 rm raw_data/example.zip
 ```
