@@ -101,7 +101,7 @@ Download and decompress the data:
 
 ```bash
 mkdir -p raw_data
-wget -t 3 -O raw_data/tutorial_data.zip https://zenodo.org/records/21252847/files/tutorial_data.zip
+wget -t 3 -O raw_data/tutorial_data.zip https://zenodo.org/records/21269560/files/tutorial_data.zip
 unzip -j raw_data/tutorial_data.zip -d raw_data
 rm raw_data/tutorial_data.zip
 ```
@@ -329,7 +329,7 @@ For each permutation, the phage profiles are shuffled across samples while the p
 
 In this way, we break the sample-level matching between phage profiles and prokaryotic profiles. The random background includes all random scores for that phage against all prokaryotes from all permutation runs. We then compare each real phage-prokaryote score with this background to test whether it is higher than expected by chance and calculate a p-value.
 
-This step can be very computationally intensive for large-scale healthy human stool samples.
+This step can be very computationally intensive for large sample size.
 **Note**: It is recommended only when formal false discovery rate (FDR) control is required. It is best suited for high-performance computing environments or systems with sufficient CPU resources. For exploratory analyses, users may first apply a heuristic cutoff, such as `normalized_score >= 3.5`, to prioritize candidate PHIs.
 
 To save time, we use 100 instead of 1,000 permutations. To perform 1,000 permutations, change `N=99` to `N=999` when your computational resources allow.
@@ -428,8 +428,14 @@ vOTU-000001	s__Bifidobacterium catenulatum	0.27397364	0.389766008982696	0.963276
   `results/PHILM_interactions.pvalues.filtered.tsv`
 
 ## Results
-You can skip some steps if they are time-consuming. To perform any step without depending on previous steps, we provided the essential intermediate results on [Zenodo](https://zenodo.org/records/21252847).  Use `7zz x <compressed_file>.7z` to uncompress files:
-- `PHILM_input_data.7z`: contains input files that should be put in `data/`.
-- - `PHILM_model_results.7z`: contains `PHILM_best_model.pth`, `PHILM_best_params.yaml`, `PHILM_predict_test.ft.metrics`, `PHILM_predict_val.ft.metrics` and `PHILM_predict_train.ft.metrics`.
-- `PHILM_interactions.7z`: contains `PHILM_interactions.tsv`, `PHILM_interactions.pvalues.tsv` and `PHILM_interactions.pvalues.filtered.tsv`.
-- `permutation_null_<start number-end number>.7z`: We performed 1,000 permutations to get p-values and a single file is super big, so we divided them into 10 files. Merge the uncompressed files in this file structure `results/permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv` before running Step 5.3.
+Some steps in this tutorial can be time-consuming. To allow users to run individual steps without completing all preceding steps, we provide the essential intermediate results on [Zenodo](https://zenodo.org/records/21269560). Use the following commands to decompress each 7z archive: 
+```bash
+wget -t 3 -O tutorial_data.zip https://zenodo.org/records/21269560/files/<compressed_file>.7z
+7zz x <compressed_file>.7z`
+```
+
+The provided archives include:
+* `PHILM_input_data.7z`: Contains the input files required by PHILM. These files should be placed in the `data/` directory.
+* `PHILM_model_results.7z`: Contains the trained model and prediction metrics, including `PHILM_best_model.pth`, `PHILM_best_params.yaml`, `PHILM_predict_test.ft.metrics`, `PHILM_predict_val.ft.metrics`, and `PHILM_predict_train.ft.metrics`.
+* `PHILM_interactions.7z`: Contains the inferred interaction results, including `PHILM_interactions.tsv`, `PHILM_interactions.pvalues.tsv`, and `PHILM_interactions.pvalues.filtered.tsv`.
+* `perm_<start number-end number>_scores.tsv.7z`: * `perm_<start-end>_scores.tsv.7z`: These archives contain the permutation-derived PHILM scores used for empirical p-value calculation. Because storing all 1,000 permutation results in a single file would be very large, the results were divided into 50 compressed files. After decompressing all `.7z` files, organize the permutation results into the required PHILM directory structure by running: `python organize_perm_files.py --input "perm_*-*_scores.tsv" --outdir permutation_null`. This command will generate files with the following structure: `permutation_null/perm_*/PHILM_perm_*.raw_gradient.tsv`. Before running Step 5.3, move or place the generated `permutation_null/` directory under the `results/` directory.
