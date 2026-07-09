@@ -18,8 +18,8 @@
     - [Option 1. Install using conda environment files](#option-1-install-using-conda-environment-files)
     - [Option 2. Install using pip inside a conda environment](#option-2-install-using-pip-inside-a-conda-environment)
   - [Usage](#usage)
-    - [Tutorial](#tutorial)
     - [Available Commands](#available-commands)
+    - [Tutorial](#tutorial)
     - [1. Data Preparation](#1-data-preparation)
     - [2. Model Training](#2-model-training)
     - [3. Evaluation](#3-evaluation)
@@ -87,10 +87,6 @@ PHILM can run on CPU-only Linux systems and NVIDIA CUDA-enabled Linux systems. S
 
 ## Usage
 
-### Tutorial
-A step-by-step tutorial for phage-host interaction prediction from **7,016 healthy human stool samples** is available [here](https://yiyanyang0728.github.io/PHILM/).
-
----
 
 After installation, PHILM provides several command-line tools for data preparation, model training, evaluation, interaction inference, permutation-based significance testing, and latent representation extraction.
 
@@ -111,7 +107,13 @@ You can view the help message for each command using `-h` or `--help`.
 
 ---
 
-**Below, we provide a quick walk-through of PHILM using an example dataset. For more detailed instructions, please visit the [step-by-step tutorial](https://yiyanyang0728.github.io/PHILM/).**
+### Tutorial
+A step-by-step tutorial for phage-host interaction prediction from **7,016 healthy human stool samples** is available [here](https://yiyanyang0728.github.io/PHILM/).
+
+
+---
+
+**Below, we provide a quick walk-through of PHILM using an example dataset. For more detailed instructions, please visit the [step-by-step tutorial](https://yiyanyang0728.github.io/PHILM/) above.**
 
 
 ### 1. Data Preparation
