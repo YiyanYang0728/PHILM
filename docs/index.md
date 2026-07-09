@@ -4,7 +4,6 @@
     Reproduce the analysis on 7,016 healthy human stool samples, from data preparation to interaction inference and permutation-based significance testing.
   </p>
   <p style="color:#ffffff; font-size:18px; margin:0;">
-    <a href="#contents" style="color:#ffffff;">Contents</a> |
     <a href="#usage" style="color:#ffffff;">Usage</a> |
     <a href="#tutorial" style="color:#ffffff;">Tutorial</a> |
     <a href="#results" style="color:#ffffff;">Results</a>
