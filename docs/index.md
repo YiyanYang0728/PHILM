@@ -430,8 +430,8 @@ vOTU-000001	s__Bifidobacterium catenulatum	0.27397364	0.389766008982696	0.963276
 ## Results
 Some steps in this tutorial can be time-consuming. To allow users to run individual steps without completing all preceding steps, we provide the essential intermediate results on [Zenodo](https://zenodo.org/records/21269560). Use the following commands to decompress each 7z archive: 
 ```bash
-wget -t 3 -O tutorial_data.zip https://zenodo.org/records/21269560/files/<compressed_file>.7z
-7zz x <compressed_file>.7z`
+wget -t 3 -O <compressed_file>.7z https://zenodo.org/records/21269560/files/<compressed_file>.7z
+7zz x <compressed_file>.7z
 ```
 
 The provided archives include:
